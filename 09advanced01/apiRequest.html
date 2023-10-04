@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    //table taken from mdn doc about readyState property
+    <table>
+        <thead>
+          <tr>
+            <th>Value</th>
+            <th>State</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>0</code></td>
+            <td><code>UNSENT</code></td>
+            <td>Client has been created. <code>open()</code> not called yet.</td>
+          </tr>
+          <tr>
+            <td><code>1</code></td>
+            <td><code>OPENED</code></td>
+            <td><code>open()</code> has been called.</td>
+          </tr>
+          <tr>
+            <td><code>2</code></td>
+            <td><code>HEADERS_RECEIVED</code></td>
+            <td><code>send()</code> has been called, and headers and status are available.</td>
+          </tr>
+          <tr>
+            <td><code>3</code></td>
+            <td><code>LOADING</code></td>
+            <td>Downloading; <code>responseText</code> holds partial data.</td>
+          </tr>
+          <tr>
+            <td><code>4</code></td>
+            <td><code>DONE</code></td>
+            <td>The operation is complete.</td>
+          </tr>
+        </tbody>
+      </table>
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary'
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);//it will detect all the stages 
+        if(xhr.readyState === 4){
+            const dat = this.responseText//this will get all the information in api in text/string form. also this. is mendatory, we'll see later why.
+            console.log(dat)
+            console.log(typeof dat);//string, hence we can't use methods. hence we need to convert it into JSON
+            const data = JSON.parse(this.responseText)//responsetext converted into JSON
+            
+            console.log(typeof data);
+            console.log(data.followers)
+        }
+    }
+    //V8 engine is a popular engine that runs javascript, it's completely written in c++. you can read it's code directly from it's mirror version in github
+
+    xhr.open('GET', requestUrl)
+    xhr.send();
+</script>
+
+</html>
