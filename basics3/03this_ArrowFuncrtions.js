@@ -39,3 +39,21 @@ const user1 = () => ({username: "souhardya"})//in order to return object we need
 // console.log(user1());//will return the object
 
 const myArray = [2, 3, 6, 7,]
+
+function regularFuncn() {
+    console.log(arguments);
+}
+
+regularFuncn(1, 2, 5)
+
+const arrowFuncn = () => {
+    console.log(arguments)
+}
+
+arrowFuncn(2, 5, 8)// won't work as expected, it gives the arguments object of the enclosing(surrounding)
+
+const afWithArgs = (...args) => {
+    console.log(args)
+}
+
+afWithArgs(2, 5, 8, 9)
