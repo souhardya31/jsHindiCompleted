@@ -8,7 +8,6 @@ class User {
 }
 
 class Teacher extends User{
-    //user becomes an istance of teacher
     constructor(username, email, password){
         super(username)
         this.email = email
@@ -25,8 +24,8 @@ chai.addCourse()
 const masalaChai = new User("masalaChai")
 
 
-//choto jon boro jon er instance, vice versa not true
+// je besi property use korte pare, he instance of kom property
 
-console.log(masalaChai instanceof User);//masala chai ekta object jeda User class dia i toiri hoise
+console.log(masalaChai instanceof User);//true
 
-console.log(masalaChai instanceof Teacher)// user abar instance of teacher, tai masalaChai o instance of teacher
+console.log(chai instanceof User)//true
